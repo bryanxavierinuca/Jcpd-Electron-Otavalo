@@ -1,0 +1,74 @@
+<nav class="sidebar bg-dark" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group">
+        <a routerLink="/" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>{{'Gad Municipal'}}</span>
+        </a>
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages')" *ngIf="auth.isLoggedIn()">
+                <i class="fa fa-fw fa-desktop"></i>&nbsp;
+                <span *ngIf="auth.isLoggedIn()">Casos</span>
+            </a>
+
+
+            <li class="nested" [class.expand]="showMenu === 'pages'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/caso-form']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span *ngIf="auth.isLoggedIn()">{{'Registro de Casos'}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/casos-list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span *ngIf="auth.isLoggedIn()">{{'Busqueda De Casos'}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages1')" *ngIf="auth.isLoggedIn()">
+                <i class="fa fa-fw fa-desktop"></i>&nbsp;
+                <span *ngIf="auth.isLoggedIn()">Procesos</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pages1'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/casos-list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span *ngIf="auth.isLoggedIn()">{{'Revisión de Casos'}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span *ngIf="auth.isLoggedIn()">{{'Revision de Audiencias'}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span *ngIf="auth.isLoggedIn()">{{'Cumplimiento de Medidas Emergentes'}} </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <div class="header-fields">
+            <a (click)="rltAndLtr()" class="list-group-item">
+                <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+
+        <i class="fa fa-fw fa-angle-double-left"></i>&nbsp;
+        <span>{{ 'Collapse Sidebar'  }}</span>
+    </div>
+</nav>

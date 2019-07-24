@@ -1,0 +1,39 @@
+<app-page-header [heading]="'Busqueda de Casos Registrados'" [icon]="'fa-th-list'"></app-page-header>
+<div class="row">
+
+    <div class="col col-xl-10 col-lg-15">
+        <div class="card mb-3">
+            <div class="card-header " align=center> LISTA DE CASOS REGISTRADOS</div>
+            <table class="card-body table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nro. Caso <input class="form-control" height="0,5" width="0,5" placeholder="Filtrar Caso">
+                        </th>
+                        <th>Fecha Ingreso</th>
+                        <th>Fecha Registro</th>
+                        <th>Ver Caso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of casosli">
+                        <th scope="row">{{item.caso_numcaso}}</th>
+
+
+                        <td>{{item.caso_fechaingreso |date:'yyyy-MM-dd'}}</td>
+                        <td>{{item.caso_fechareg | date:'yyyy-MM-dd'}}</td>
+                        <td><button>Ver Caso</button></td>
+                    </tr>
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
